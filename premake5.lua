@@ -12,9 +12,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFWm"] = "Odin/vendor/GLFWm/include"
+IncludeDir["GLFW"] = "Odin/vendor/GLFW/include"
 
-include "Odin/vendor/GLFWm"
+include "Odin/vendor/GLFW"
 
 project "Odin"
     location "Odin"
@@ -37,12 +37,12 @@ project "Odin"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFWm}",
+        "%{IncludeDir.GLFW}",
     }
 
     links
     {
-        "GLFWm",
+        "GLFW",
         "opengl32.lib",
     }
 

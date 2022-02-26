@@ -1,4 +1,6 @@
 [submodule "Odin/vendor/spdlog"]
 	path = Odin/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-
+[submodule "Odin/vendor/GLFW"]
+	path = Odin/vendor/GLFW
+	url = https://github.com/glfw/glfw
