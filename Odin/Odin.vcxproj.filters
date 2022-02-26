@@ -1,36 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Odin">
+      <UniqueIdentifier>{CF188A7C-BB4F-8B0D-643C-71105052070F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Odin\Events">
+      <UniqueIdentifier>{D3E5EFBD-3F9B-68B3-C88F-628A34445FB7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Odin\Platform">
+      <UniqueIdentifier>{03AE9E15-6F6E-1A4C-38A9-63C9A4285F28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Odin\Platform\Windows">
+      <UniqueIdentifier>{3DABEF4B-A917-AB46-720B-43A4DE36CDAE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Odin\Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Odin.h" />
     <ClInclude Include="src\Odin\Application.h">
-      <Filter>Header Files</Filter>
+      <Filter>Odin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Odin.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Odin\Core.h">
+      <Filter>Odin</Filter>
     </ClInclude>
     <ClInclude Include="src\Odin\EntryPoint.h">
-      <Filter>Header Files</Filter>
+      <Filter>Odin</Filter>
     </ClInclude>
+    <ClInclude Include="src\Odin\Events\ApplicationEvent.h">
+      <Filter>Odin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Events\Event.h">
+      <Filter>Odin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Events\KeyEvent.h">
+      <Filter>Odin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Events\MouseEvent.h">
+      <Filter>Odin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Log.h">
+      <Filter>Odin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Platform\Windows\WindowsWindow.h">
+      <Filter>Odin\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Window.h">
+      <Filter>Odin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\odpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Odin\Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Odin</Filter>
     </ClCompile>
+    <ClCompile Include="src\Odin\Log.cpp">
+      <Filter>Odin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Odin\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Odin\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\odpch.cpp" />
   </ItemGroup>
 </Project>
