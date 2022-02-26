@@ -3,7 +3,7 @@
 	url = https://github.com/gabime/spdlog
 [submodule "Odin/vendor/GLFW"]
 	path = Odin/vendor/GLFW
-	url = https://github.com/TheCherno/glfw
+	url = https://github.com/glfw/glfw
 [submodule "vendor/Odin/vendor/GLFWc"]
 	path = vendor/Odin/vendor/GLFWc
 	url = https://github.com/TheCherno/glfw
