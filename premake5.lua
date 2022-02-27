@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Odin/vendor/GLFW/include"
+IncludeDir["Glad"] = "Odin/vendor/Glad/include"
+IncludeDir["ImGui"] = "Odin/vendor/imgui"
 
 include "Odin/vendor/GLFW"
+include "Odin/vendor/Glad"
+include "Odin/vendor/imgui"
 
 project "Odin"
     location "Odin"
@@ -38,11 +42,15 @@ project "Odin"
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}",
     }
 
     links
     {
         "GLFW",
+        "Glad",
+        "ImGui",
         "opengl32.lib",
     }
 
@@ -54,7 +62,8 @@ project "Odin"
         defines
         {
             "OD_PLATFORM_WINDOWS",
-            "OD_BUILD_DLL"
+            "OD_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -64,14 +73,17 @@ project "Odin"
 
     filter "configurations:Debug"
         defines "OD_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "OD_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "OD_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -110,12 +122,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "OD_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "OD_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "OD_DIST"
+        buildoptions "/MD"
         optimize "On"

@@ -7,11 +7,17 @@
     <Filter Include="Odin\Events">
       <UniqueIdentifier>{D3E5EFBD-3F9B-68B3-C88F-628A34445FB7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Odin\Platform">
-      <UniqueIdentifier>{03AE9E15-6F6E-1A4C-38A9-63C9A4285F28}</UniqueIdentifier>
+    <Filter Include="Odin\ImGui">
+      <UniqueIdentifier>{39AD1B63-2565-5DB0-8E6C-360C7A43F8A0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Odin\Platform\Windows">
-      <UniqueIdentifier>{3DABEF4B-A917-AB46-720B-43A4DE36CDAE}</UniqueIdentifier>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,27 +43,49 @@
     <ClInclude Include="src\Odin\Events\MouseEvent.h">
       <Filter>Odin\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Odin\Log.h">
+    <ClInclude Include="src\Odin\ImGui\ImGuiLayer.h">
+      <Filter>Odin\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Layer.h">
       <Filter>Odin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Odin\Platform\Windows\WindowsWindow.h">
-      <Filter>Odin\Platform\Windows</Filter>
+    <ClInclude Include="src\Odin\LayerStack.h">
+      <Filter>Odin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Odin\Log.h">
+      <Filter>Odin</Filter>
     </ClInclude>
     <ClInclude Include="src\Odin\Window.h">
       <Filter>Odin</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\odpch.h" />
+    <ClInclude Include="vendor\imgui\examples\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Odin\Application.cpp">
       <Filter>Odin</Filter>
     </ClCompile>
+    <ClCompile Include="src\Odin\ImGui\ImGuiLayer.cpp">
+      <Filter>Odin\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Odin\Layer.cpp">
+      <Filter>Odin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Odin\LayerStack.cpp">
+      <Filter>Odin</Filter>
+    </ClCompile>
     <ClCompile Include="src\Odin\Log.cpp">
       <Filter>Odin</Filter>
     </ClCompile>
-    <ClCompile Include="src\Odin\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Odin\Platform\Windows</Filter>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\odpch.cpp" />
+    <ClCompile Include="vendor\imgui\examples\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>
