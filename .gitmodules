@@ -7,6 +7,6 @@
 [submodule "Odin/vendor/imgui"]
 	path = Odin/vendor/imgui
 	url = https://github.com/ocornut/imgui
-[submodule "Odin/vendor/Odin/vendor/NewImgui"]
-	path = Odin/vendor/Odin/vendor/NewImgui
+[submodule "Odin/vendor/NewImgui"]
+	path = Odin/vendor/NewImgui
 	url = https://github.com/ocornut/imgui
