@@ -4,6 +4,3 @@
 [submodule "Odin/vendor/GLFW"]
 	path = Odin/vendor/GLFW
 	url = https://github.com/glfw/glfw
-[submodule "Odin/vendor/imgui"]
-	path = Odin/vendor/imgui
-	url = https://github.com/TheCherno/imgui
