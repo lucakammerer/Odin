@@ -11,12 +11,19 @@ public:
 
 	void OnUpdate() override
 	{
-		OD_INFO("ExampleLayer::Update");
+		if (Odin::Input::IsKeyPressed(OD_KEY_TAB))
+			OD_TRACE("Tab is pressed! (poll)!");
 	}
 
 	void OnEvent(Odin::Event& event) override
 	{
-		OD_TRACE("{0}", event);
+		if (event.GetEventType() == Odin::EventType::KeyPressed)
+		{
+			Odin::KeyPressedEvent& e = (Odin::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == OD_KEY_TAB)
+				OD_TRACE("Tab is pressed! (event)!");
+			OD_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

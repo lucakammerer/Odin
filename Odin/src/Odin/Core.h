@@ -10,7 +10,11 @@
 	#error Odin only supports Windows!
 #endif
 
-#ifdef OD_ENABLE_ASSERT
+#ifdef OD_DEBUG
+	#define OD_ENABLE_ASSERTS
+#endif
+
+#if OD_ENABLE_ASSERT
 	#define OD_ASSERT(x, ...) { if(!(x)) { OD_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define OD_CORE_ASSERT(x, ...) { if(!(x)) { OD_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
 #else
