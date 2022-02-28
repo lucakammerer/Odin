@@ -7,6 +7,8 @@
 
 #include "Input.h"
 
+#include "glm/glm.hpp"
+
 namespace Odin {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
