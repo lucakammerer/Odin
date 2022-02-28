@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Odin/vendor/GLFW/include"
 IncludeDir["Glad"] = "Odin/vendor/Glad/include"
 IncludeDir["ImGui"] = "Odin/vendor/imgui"
+IncludeDir["glm"] = "Odin/vendor/glm"
 
 include "Odin/vendor/GLFW"
 include "Odin/vendor/Glad"
@@ -36,7 +37,9 @@ project "Odin"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl",
     }
 
     includedirs
@@ -46,6 +49,7 @@ project "Odin"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}",
     }
 
     links
@@ -105,7 +109,8 @@ project "Sandbox"
     includedirs
     {
         "Odin/vendor/spdlog/include",
-        "Odin/src"
+        "Odin/src",
+        "%{IncludeDir.glm}",
     }
 
     links {
