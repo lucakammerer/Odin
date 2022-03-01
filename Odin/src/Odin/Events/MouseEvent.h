@@ -3,6 +3,7 @@
 #include "Event.h"
 
 namespace Odin {
+
 	class ODIN_API MouseMovedEvent : public Event
 	{
 	public:
@@ -20,7 +21,7 @@ namespace Odin {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -38,7 +39,7 @@ namespace Odin {
 		{
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
-				return ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
@@ -91,4 +92,5 @@ namespace Odin {
 
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
+
 }

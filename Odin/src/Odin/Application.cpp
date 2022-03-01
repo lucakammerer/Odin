@@ -7,8 +7,6 @@
 
 #include "Input.h"
 
-#include "glm/glm.hpp"
-
 namespace Odin {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -23,13 +21,12 @@ namespace Odin {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		unsigned int id;
-		glGenVertexArrays(1, &id);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
 	{
-
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -52,11 +49,10 @@ namespace Odin {
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
-			if (e.m_Handled)
+			if (e.Handled)
 				break;
 		}
 	}
-
 
 	void Application::Run()
 	{
@@ -67,6 +63,11 @@ namespace Odin {
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

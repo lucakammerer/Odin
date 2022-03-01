@@ -23,4 +23,5 @@ namespace Odin {
 	private:
 		static Input* s_Instance;
 	};
+
 }

@@ -7,8 +7,10 @@
 #include "Odin/Events/Event.h"
 #include "Odin/Events/ApplicationEvent.h"
 
+#include "Odin/ImGui/ImGuiLayer.h"
 
 namespace Odin {
+
 	class ODIN_API Application
 	{
 	public:
@@ -21,12 +23,15 @@ namespace Odin {
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
-		inline static Application& Get() { return *s_Instance; }
+
 		inline Window& GetWindow() { return *m_Window; }
+
+		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
@@ -35,7 +40,5 @@ namespace Odin {
 
 	// To be defined in CLIENT
 	Application* CreateApplication();
+
 }
-
-
-

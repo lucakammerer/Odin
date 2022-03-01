@@ -1,8 +1,8 @@
 #include "odpch.h"
 #include "WindowsInput.h"
 
-#include <GLFW/glfw3.h>
 #include "Odin/Application.h"
+#include <GLFW/glfw3.h>
 
 namespace Odin {
 
@@ -42,4 +42,5 @@ namespace Odin {
 		auto [x, y] = GetMousePositionImpl();
 		return y;
 	}
+
 }

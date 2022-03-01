@@ -6,13 +6,14 @@
 #include "Odin/Events/Event.h"
 
 namespace Odin {
+
 	struct WindowProps
 	{
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Odin Engine",
+		WindowProps(const std::string& title = "Hazel Engine",
 			unsigned int width = 1280,
 			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
@@ -20,14 +21,14 @@ namespace Odin {
 		}
 	};
 
-	// Interface representing a desktop system based Windows
+	// Interface representing a desktop system based Window
 	class ODIN_API Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
 		virtual ~Window() {}
-			
+
 		virtual void OnUpdate() = 0;
 
 		virtual unsigned int GetWidth() const = 0;
@@ -42,4 +43,5 @@ namespace Odin {
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
+
 }

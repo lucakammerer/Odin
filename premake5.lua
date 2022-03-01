@@ -110,6 +110,7 @@ project "Sandbox"
     {
         "Odin/vendor/spdlog/include",
         "Odin/src",
+		"Odin/vendor",
         "%{IncludeDir.glm}",
     }
 

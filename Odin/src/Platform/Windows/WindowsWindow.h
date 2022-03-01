@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 
 namespace Odin {
-	
+
 	class WindowsWindow : public Window
 	{
 	public:
@@ -40,4 +40,5 @@ namespace Odin {
 
 		WindowData m_Data;
 	};
+
 }

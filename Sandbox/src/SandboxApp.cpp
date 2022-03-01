@@ -1,5 +1,6 @@
-#include "odpch.h"
 #include <Odin.h>
+
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Odin::Layer
 {
@@ -12,7 +13,14 @@ public:
 	void OnUpdate() override
 	{
 		if (Odin::Input::IsKeyPressed(OD_KEY_TAB))
-			OD_TRACE("Tab is pressed! (poll)!");
+			OD_TRACE("Tab key is pressed (poll)!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Odin::Event& event) override
@@ -21,10 +29,11 @@ public:
 		{
 			Odin::KeyPressedEvent& e = (Odin::KeyPressedEvent&)event;
 			if (e.GetKeyCode() == OD_KEY_TAB)
-				OD_TRACE("Tab is pressed! (event)!");
+				OD_TRACE("Tab key is pressed (event)!");
 			OD_TRACE("{0}", (char)e.GetKeyCode());
 		}
 	}
+
 };
 
 class Sandbox : public Odin::Application
@@ -33,13 +42,13 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Odin::ImGuiLayer());
 	}
 
 	~Sandbox()
 	{
 
 	}
+
 };
 
 Odin::Application* Odin::CreateApplication()
