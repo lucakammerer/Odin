@@ -9,6 +9,8 @@
 
 #include "Odin/ImGui/ImGuiLayer.h"
 
+#include "Odin/Renderer/Shader.h"
+
 namespace Odin {
 
 	class ODIN_API Application
@@ -36,6 +38,7 @@ namespace Odin {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
