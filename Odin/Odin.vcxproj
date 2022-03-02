@@ -155,9 +155,12 @@
     <ClInclude Include="src\Odin\LayerStack.h" />
     <ClInclude Include="src\Odin\Log.h" />
     <ClInclude Include="src\Odin\MouseButtonCodes.h" />
+    <ClInclude Include="src\Odin\Renderer\Buffer.h" />
     <ClInclude Include="src\Odin\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Odin\Renderer\Renderer.h" />
     <ClInclude Include="src\Odin\Renderer\Shader.h" />
     <ClInclude Include="src\Odin\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -585,7 +588,10 @@
     <ClCompile Include="src\Odin\Layer.cpp" />
     <ClCompile Include="src\Odin\LayerStack.cpp" />
     <ClCompile Include="src\Odin\Log.cpp" />
+    <ClCompile Include="src\Odin\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Odin\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Odin\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
