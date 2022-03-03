@@ -7,13 +7,9 @@
 #include "Odin/Events/Event.h"
 #include "Odin/Events/ApplicationEvent.h"
 
+#include "Odin/Core/Timestep.h"
+
 #include "Odin/ImGui/ImGuiLayer.h"
-
-#include "Odin/Renderer/Shader.h"
-#include "Odin/Renderer/Buffer.h"
-#include "Odin/Renderer/VertexArray.h"
-
-#include "Odin/Renderer/OrthographicCamera.h"
 
 namespace Odin {
 
@@ -35,11 +31,12 @@ namespace Odin {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

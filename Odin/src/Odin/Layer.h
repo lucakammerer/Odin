@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Odin/Core.h"
+#include "Odin/Core/Timestep.h"
 #include "Odin/Events/Event.h"
 
 namespace Odin {
@@ -13,7 +14,7 @@ namespace Odin {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

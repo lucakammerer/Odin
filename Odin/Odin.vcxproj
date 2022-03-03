@@ -143,6 +143,7 @@
     <ClInclude Include="src\Odin.h" />
     <ClInclude Include="src\Odin\Application.h" />
     <ClInclude Include="src\Odin\Core.h" />
+    <ClInclude Include="src\Odin\Core\Timestep.h" />
     <ClInclude Include="src\Odin\EntryPoint.h" />
     <ClInclude Include="src\Odin\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Odin\Events\Event.h" />

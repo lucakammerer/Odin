@@ -6,6 +6,8 @@
 #include "Odin/Layer.h"
 #include "Odin/Log.h"
 
+#include "Odin/Core/Timestep.h"
+
 #include "Odin/Input.h"
 #include "Odin/KeyCodes.h"
 #include "Odin/MouseButtonCodes.h"
