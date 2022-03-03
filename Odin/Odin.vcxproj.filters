@@ -1352,6 +1352,9 @@
     <ClInclude Include="src\Odin\Renderer\Renderer.h" />
     <ClInclude Include="src\Odin\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Odin\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Odin\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Odin\Application.cpp">
@@ -1388,5 +1391,8 @@
     <ClCompile Include="src\Odin\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Odin\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Odin\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Odin\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
