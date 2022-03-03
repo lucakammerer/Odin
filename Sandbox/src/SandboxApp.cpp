@@ -6,7 +6,7 @@ class ExampleLayer : public Odin::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 	{
 		m_VertexArray.reset(Odin::VertexArray::Create());
 
@@ -121,11 +121,28 @@ public:
 
 	void OnUpdate() override
 	{
+		if (Odin::Input::IsKeyPressed(OD_KEY_LEFT))
+			m_CameraPosition.x -= m_CameraMoveSpeed;
+
+		else if (Odin::Input::IsKeyPressed(OD_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraMoveSpeed;
+
+		if (Odin::Input::IsKeyPressed(OD_KEY_UP))
+			m_CameraPosition.y += m_CameraMoveSpeed;
+
+		else if (Odin::Input::IsKeyPressed(OD_KEY_DOWN))
+			m_CameraPosition.y -= m_CameraMoveSpeed;
+
+		if (Odin::Input::IsKeyPressed(OD_KEY_A))
+			m_CameraRotation += m_CameraRotationSpeed;
+		else if (Odin::Input::IsKeyPressed(OD_KEY_D))
+			m_CameraRotation -= m_CameraRotationSpeed;
+
 		Odin::RenderCommand::SetClearColor({ 0.1f, 0.05f, 0.1f, 1 });
 		Odin::RenderCommand::Clear();
 
-		m_Camera.SetRotation(45.0f);
-		m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(m_CameraRotation);
 
 		Odin::Renderer::BeginScene(m_Camera);
 
@@ -141,6 +158,13 @@ public:
 
 	void OnEvent(Odin::Event& event) override
 	{
+		Odin::EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<Odin::KeyPressedEvent>(OD_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+	}
+
+	bool OnKeyPressedEvent(Odin::KeyPressedEvent& event)
+	{
+		return false;
 	}
 private:
 	std::shared_ptr<Odin::Shader> m_Shader;
@@ -150,6 +174,11 @@ private:
 	std::shared_ptr<Odin::VertexArray> m_SquareVA;
 
 	Odin::OrthographicCamera m_Camera;
+	glm::vec3 m_CameraPosition;
+	float m_CameraMoveSpeed = 0.1f;
+
+	float m_CameraRotation = 0.0f;
+	float m_CameraRotationSpeed = 5.0f;
 };
 
 class Sandbox : public Odin::Application
