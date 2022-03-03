@@ -14,6 +14,7 @@ namespace Odin {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		OD_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -69,33 +70,35 @@ namespace Odin {
 
 		std::string vertexSrc = R"(
 			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 
-			layout(location = 0) in vec3 a_Position;		
-			layout(location = 1) in vec4 a_Color;		
+			uniform mat4 u_ViewProjection;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
-	
+
 			void main()
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
 			}
 		)";
 
 		std::string fragmentSrc = R"(
 			#version 330 core
-
-			layout(location = 0) out vec4 o_Color;
+			
+			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 			in vec4 v_Color;
 
 			void main()
 			{
-				o_Color = vec4(v_Position * 0.5 + 0.5, 1.0);
-				o_Color = v_Color;
+				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = v_Color;
 			}
 		)";
 
@@ -103,28 +106,30 @@ namespace Odin {
 
 		std::string blueShaderVertexSrc = R"(
 			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
 
-			layout(location = 0) in vec3 a_Position;		
+			uniform mat4 u_ViewProjection;
 
 			out vec3 v_Position;
-	
+
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
 			}
 		)";
 
 		std::string blueShaderFragmentSrc = R"(
 			#version 330 core
-
-			layout(location = 0) out vec4 o_Color;
+			
+			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
 			void main()
 			{
-				o_Color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = vec4(0.2, 0.3, 0.8, 1.0);
 			}
 		)";
 
@@ -167,13 +172,18 @@ namespace Odin {
 			RenderCommand::SetClearColor({ 0.1f, 0.05f, 0.1f, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
+			m_Camera.SetRotation(45.0f);
+			m_Camera.SetPosition({0.5f, 0.5f, 0.0f});
+
+			Renderer::BeginScene(m_Camera);
 
 			m_BlueShader->Bind();
-			Renderer::Submit(m_SquareVA);
+			m_BlueShader->UploadUniformMat4("u_ViewProjection", m_Camera.GetViewProtectionMatrix());
+			Renderer::Submit(m_BlueShader, m_SquareVA);
 
 			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
+			m_Shader->UploadUniformMat4("u_ViewProjection", m_Camera.GetViewProtectionMatrix());
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 

@@ -13,6 +13,8 @@
 #include "Odin/Renderer/Buffer.h"
 #include "Odin/Renderer/VertexArray.h"
 
+#include "Odin/Renderer/OrthographicCamera.h"
+
 namespace Odin {
 
 	class ODIN_API Application
@@ -44,6 +46,8 @@ namespace Odin {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
