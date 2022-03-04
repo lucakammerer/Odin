@@ -22,7 +22,7 @@ public:
 			0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
 
-		std::shared_ptr<Odin::VertexBuffer> vertexBuffer;
+		Odin::Ref<Odin::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Odin::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Odin::BufferLayout layout = {
 			{ Odin::ShaderDataType::Float3, "a_Position" },
@@ -32,7 +32,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Odin::IndexBuffer> indexBuffer;
+		Odin::Ref<Odin::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Odin::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -45,7 +45,7 @@ public:
 		   -0.5f,  0.5f, 0.0f,
 		};
 
-		std::shared_ptr<Odin::VertexBuffer> squareVB;
+		Odin::Ref<Odin::VertexBuffer> squareVB;
 		squareVB.reset(Odin::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Odin::ShaderDataType::Float3, "a_Position" }
@@ -53,7 +53,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Odin::IndexBuffer> squareIB;
+		Odin::Ref<Odin::IndexBuffer> squareIB;
 		squareIB.reset(Odin::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -192,11 +192,11 @@ public:
 		return false;
 	}
 private:
-	std::shared_ptr<Odin::Shader> m_Shader;
-	std::shared_ptr<Odin::VertexArray> m_VertexArray;
+	Odin::Ref<Odin::Shader> m_Shader;
+	Odin::Ref<Odin::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Odin::Shader> m_FlatColorShader;
-	std::shared_ptr<Odin::VertexArray> m_SquareVA;
+	Odin::Ref<Odin::Shader> m_FlatColorShader;
+	Odin::Ref<Odin::VertexArray> m_SquareVA;
 
 	Odin::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
