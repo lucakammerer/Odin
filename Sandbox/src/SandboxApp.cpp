@@ -8,7 +8,7 @@ class ExampleLayer : public Odin::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 	{
 		m_VertexArray.reset(Odin::VertexArray::Create());
 
@@ -90,7 +90,7 @@ public:
 
 		m_Shader.reset(new Odin::Shader(vertexSrc, fragmentSrc));
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatColorVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -107,20 +107,22 @@ public:
 			}
 		)";
 
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatColorFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
+			uniform vec4 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = u_Color;
 			}
 		)";
 
-		m_BlueShader.reset(new Odin::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader.reset(new Odin::Shader(flatColorVertexSrc, flatColorFragmentSrc));
 	}
 
 	void OnUpdate(Odin::Timestep ts) override
@@ -150,13 +152,19 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Odin::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+				if (x % 2 == 0)
+					m_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
+				else
+					m_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
+				Odin::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 		
@@ -183,7 +191,7 @@ private:
 	std::shared_ptr<Odin::Shader> m_Shader;
 	std::shared_ptr<Odin::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Odin::Shader> m_BlueShader;
+	std::shared_ptr<Odin::Shader> m_FlatColorShader;
 	std::shared_ptr<Odin::VertexArray> m_SquareVA;
 
 	Odin::OrthographicCamera m_Camera;
